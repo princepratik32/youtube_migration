@@ -1,6 +1,8 @@
 # youtube_migration
 This is a simple script I wrote to migrate my Spotify playlists to YouTube music one at a time. Here's how to use it.
 
+**Note**: Following 4 step instructions are for `playlist_migration.py` script that uses YouTube OAuth token. There is a version of this script named `playlist_migration_cookie.py` that takes Auhorization and Cookie headers from logged in YouTube music session to function.
+
 ## Step 1: Obtain API Keys for Youtube and Spotify
 For YouTube API, signup/login to Google Cloud console and then create an API key and OAuth2.0 client ID, as well as OAuth consent screen. Make sure you give at least YouTube Data API V3 scope to your API key/client
 
@@ -35,3 +37,5 @@ For both of these, you would need 3 things:
 - `python3.12 playlist_migration.py <spotify_token> <youtube_token> <spotify_playlist> <youtube_playlist>`. It would ask you to select a YouTube search result for each song of the playlist. Just type the number and hit enter. If you want to select the first one, skip entering a number, just hit enter. 😎
 
 **Important note:** Google restricts API key usage unless you pay them or get increased quota. It's 10,000 points per day, and WRITE action takes 50 points, so you can add up to 200 songs to your playlists like this per day.
+
+If you want to use `playlist_migration_cookie.py` script, log into YouTube music on the browser, hit F12 to open developser console and look for POST calls that has Authorization and Cookie request headers. There should be some `https://music.youtube.com/youtubei/v1/player/heartbeat` calls, too. Take Cookie and Authorization strings and use that for this script.
