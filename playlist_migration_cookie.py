@@ -15,6 +15,9 @@ spotifyToken = sys.argv[3]
 youTubeCookie = sys.argv[4]
 youTubeAuth = sys.argv[5]
 
+
+selectedIndex = int(input("Starting index (0 to N): ") or 0)
+
 baseSpotifyEndpoint = "https://api.spotify.com/v1"
 
 # fetch Spotify playlist items
@@ -92,6 +95,8 @@ for song in spotifyResponse:
 
 totalsongs = len(songList)
 for playlistIndex, song in enumerate(songList):
+	if (playlistIndex < selectedIndex):
+		continue
 	clear()
 	# Print progress
 	print("Adding : " + str(playlistIndex + 1) + " of " + str(totalsongs) + " : " + song)
